@@ -8,7 +8,14 @@ class FlatImageClassifier(tf.keras.Model):
 
         self.model = tf.keras.Sequential([
             tf.keras.layers.Dense(256),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.ReLU(),
+            tf.keras.layers.Dropout(0.3),
             tf.keras.layers.Dense(128),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.ReLU(),
+            tf.keras.layers.Dropout(0.3),
+            tf.keras.layers.Flatten(),
             tf.keras.layers.Dense(num_classes)
         ])
 
@@ -23,8 +30,17 @@ class ImageClassifier(tf.keras.Model):
 
         self.model = tf.keras.Sequential([
             tf.keras.layers.Conv2D(8, 5, 2, 'same'),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.ReLU(),
+            tf.keras.layers.Dropout(0.3),
             tf.keras.layers.Conv2D(16, 5, 2, 'same'),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.ReLU(),
+            tf.keras.layers.Dropout(0.3),
             tf.keras.layers.Conv2D(32, 5, 2, 'same'),
+            tf.keras.layers.BatchNormalization(),
+            tf.keras.layers.ReLU(),
+            tf.keras.layers.Dropout(0.3),
             tf.keras.layers.Flatten(),
             tf.keras.layers.Dense(num_classes)
         ])
